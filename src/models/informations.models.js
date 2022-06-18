@@ -2,12 +2,12 @@ const { connection } = require('../../db-connection');
 
 class Info {
   static findMany() {
-    let sql = "SELECT id_information, profile, looking_for FROM informations";
+    let sql = "SELECT id_information, profile, looking_for, interests FROM informations";
     return connection.promise().query(sql);
   }
 
   static findOne(id) {
-    const sql = "SELECT id_information, profile, looking_for FROM informations WHERE id_information = ?";
+    const sql = "SELECT id_information, profile, looking_for, interests FROM informations WHERE id_information = ?";
     return connection.promise().query(sql, [id]);
   }
 

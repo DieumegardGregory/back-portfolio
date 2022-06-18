@@ -42,7 +42,7 @@ const createOneInfo = async (req, res, next) => {
 
 const updateOneInfo = async (req, res) => {
     const id = req.params.id;
-    const { profile, looking_for } = req.body;
+    const { profile, looking_for, interests } = req.body;
     let newInfo = {};
     if (profile) {
         newInfo.profile = profile;
@@ -50,7 +50,9 @@ const updateOneInfo = async (req, res) => {
     if (looking_for) {
         newInfo.looking_for = looking_for;
     }
-
+    if (interests) {
+        newInfo.interests = interests;
+    }
     try {
         const [result] = await Info.updateOne(id, newInfo);
         if (result.affectedRows > 0) {
